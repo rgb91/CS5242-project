@@ -1,4 +1,5 @@
-def read_pdb(filename):
+
+def read_pdb_file(filename):
     with open (filename, 'r') as file:
         strline_L = file.readlines ()
     # print(strline_L)
@@ -22,17 +23,17 @@ def read_pdb(filename):
 
         atomtype = stripped_line[76:78].strip ()
         if atomtype == 'C':
-            atomtype_list.append ('h')  # 'h' means hydrophobic
+            atomtype_list.append (1.0)  # 'h' means hydrophobic
         else:
-            atomtype_list.append ('p')  # 'p' means polar
+            atomtype_list.append (-1.0)  # 'p' means polar
 
     return X_list, Y_list, Z_list, atomtype_list
 
-
-X_list, Y_list, Z_list, atomtype_list = read_pdb ("training_first_100_samples/0025_lig_cg.pdb")
-# X_list, Y_list, Z_list, atomtype_list=read_pdb("training_first_100_samples/0001_pro_cg.pdb")
-# X_list, Y_list, Z_list, atomtype_list=read_pdb("training_first_100_samples/0001_lig_cg.pdb")
-print (X_list)
-print (Y_list)
-print (Z_list)
-print (atomtype_list)
+#
+# X_list, Y_list, Z_list, atomtype_list = read_pdb ("training_first_100_samples/0025_lig_cg.pdb")
+# # X_list, Y_list, Z_list, atomtype_list=read_pdb("training_first_100_samples/0001_pro_cg.pdb")
+# # X_list, Y_list, Z_list, atomtype_list=read_pdb("training_first_100_samples/0001_lig_cg.pdb")
+# print (X_list)
+# print (Y_list)
+# print (Z_list)
+# print (atomtype_list)
