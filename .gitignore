@@ -5,6 +5,8 @@ processed_train_data/*
 processed_test_data/*
 processed_data_20/*
 data100/*
+testing_data_release/*
+training_data/*
 
 # User-specific stuff
 .idea/**/workspace.xml
