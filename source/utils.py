@@ -4,12 +4,15 @@ Created by Sanjay at 10/12/2018
 Feature: Utility functions are
 kept here
 """
+import os
 import numpy as np
+from sklearn.model_selection import train_test_split
 
-
-def dataset_reader():
-    return [],[],[],[],[]
-
+def dataset_reader(datasetpath):
+    X = np.load(os.path.join(datasetpath, 'X.npy'))
+    y = np.load(os.path.join(datasetpath, 'y.npy'))
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=99)
+    return X_train, X_test, y_train, y_test
 
 def read_pdb_file(filename):
     with open (filename, 'r') as file:
@@ -26,7 +29,7 @@ def read_pdb_file(filename):
 
         line_length = len (stripped_line)
         # print("Line length:{}".format(line_length))
-        if line_length != 78:
+        if line_length < 78:
             print ("ERROR: line length is different. Expected=78, current={}".format (line_length))
 
         X_list.append (float (stripped_line[30:38].strip ()))
